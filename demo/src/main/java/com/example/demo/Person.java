@@ -19,17 +19,22 @@ public class Person {
     private String name;
     private Long id;
 
-    @ManyToMany
-    private Set<Group> groups;
+    @ManyToMany(mappedBy = "person")
+    private Set<Test> groups;
 
     public Person() {
+    }
+
+    public Person(String name, Set<Test> groups) {
+        this.name = name;
+        this.groups = groups;
     }
 
     public String getName() {
         return name;
     }
 
-    public Set<Group> getGroups() {
+    public Set<Test> getGroups() {
         return groups;
     }
 
@@ -45,7 +50,7 @@ public class Person {
         this.id = id;
     }
 
-    public void setGroups(Set<Group> groups) {
+    public void setGroups(Set<Test> groups) {
         this.groups = groups;
     }
 }
