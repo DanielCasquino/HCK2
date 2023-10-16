@@ -16,10 +16,11 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private String name;
     private Long id;
 
-    @ManyToMany(mappedBy = "person")
+    private String name;
+
+    @ManyToMany(mappedBy = "persons")
     private Set<Test> groups;
 
     public Person() {

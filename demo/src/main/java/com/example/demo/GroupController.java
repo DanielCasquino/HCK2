@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,8 +21,14 @@ public class GroupController {
 
     @GetMapping
     public ResponseEntity<List<Test>> groups() {
-        List<Test> groups = groupRepository.findAll();
-        return new ResponseEntity<>(groups, HttpStatus.OK);
+        List<Test> query = groupRepository.findAll();
+        return new ResponseEntity<>(query, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<String> createGroup(@RequestBody Test group) {
+        groupRepository.save(group);
+        return ResponseEntity.status(201).body("Person created");
     }
 
     @GetMapping("/{id}")
