@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/group")
+@RequestMapping("/groups")
 public class GroupController {
     
     @Autowired
@@ -34,7 +34,7 @@ public class GroupController {
         return new ResponseEntity<>(query.get(), HttpStatus.OK);
     }
 
-    @GetMapping("/person/{id}")
+    @GetMapping("/persons/{id}")
     public ResponseEntity<List<Group>> getPersonGroups(@PathVariable Long id) {
         Optional<Person> query = PersonRepository.findById(id);
         if (query.isPresent()) {
