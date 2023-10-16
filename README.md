@@ -4,3 +4,4 @@
 2. Gabriel Blanco
 3. Camilo Soto
 4. Sebastián Urbina
+5. Fabrizio Paico
