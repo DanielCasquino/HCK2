@@ -28,7 +28,7 @@ public class GroupController {
     @PostMapping
     public ResponseEntity<String> createGroup(@RequestBody Test group) {
         groupRepository.save(group);
-        return ResponseEntity.status(201).body("Person created");
+        return ResponseEntity.status(201).body("Group created");
     }
 
     @GetMapping("/{id}")

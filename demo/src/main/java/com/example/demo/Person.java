@@ -2,6 +2,9 @@ package com.example.demo;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +24,7 @@ public class Person {
     private String name;
 
     @ManyToMany(mappedBy = "persons")
+    @JsonIgnore
     private Set<Test> groups;
 
     public Person() {

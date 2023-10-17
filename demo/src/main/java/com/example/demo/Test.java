@@ -2,6 +2,8 @@ package com.example.demo;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +15,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "group")
+@Table(name = "test")
 public class Test {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,6 +26,7 @@ public class Test {
 
     @ManyToMany
     @JoinTable(name = "group_person", joinColumns = @JoinColumn(name = "group_id"), inverseJoinColumns = @JoinColumn(name = "person_id"))
+
     private Set<Person> persons;
 
     public Test() {
