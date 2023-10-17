@@ -69,10 +69,9 @@ public class GroupController {
     public ResponseEntity<Set<Person>> getGroupsPersons(@PathVariable Long id) {
         Optional<Test> query = groupRepository.findById(id);
         if (query.isPresent()) {
-            Set<Person> persons = query.get().getPersons();
-            return new ResponseEntity<>(persons, HttpStatus.OK);
+            return new ResponseEntity<Set<Person>>(query.get().getPersons(), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Set<Person>>(HttpStatus.NOT_FOUND);
         }
     }
 }

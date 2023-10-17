@@ -2,6 +2,8 @@ package com.example.demo;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,6 +26,7 @@ public class Person {
 
     @ManyToMany
     @JoinTable(name = "grupos_persons", joinColumns = @JoinColumn(name = "grupos_id"), inverseJoinColumns = @JoinColumn(name = "person_id"))
+    @JsonIgnore
     private Set<Test> grupos;
 
     public Person() {
