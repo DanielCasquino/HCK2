@@ -2,14 +2,13 @@ package com.example.demo;
 
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
@@ -23,24 +22,25 @@ public class Person {
 
     private String name;
 
-    @ManyToMany(mappedBy = "persons")
-    @JsonIgnore
-    private Set<Test> groups;
+    @ManyToMany
+    @JoinTable(name = "grupos_persons", joinColumns = @JoinColumn(name = "grupos_id"), inverseJoinColumns = @JoinColumn(name = "person_id"))
+    private Set<Test> grupos;
 
     public Person() {
     }
 
-    public Person(String name, Set<Test> groups) {
+    public Person(Long id, String name, Set<Test> grupos) {
+        this.id = id;
         this.name = name;
-        this.groups = groups;
+        this.grupos = grupos;
     }
 
     public String getName() {
         return name;
     }
 
-    public Set<Test> getGroups() {
-        return groups;
+    public Set<Test> getGrupos() {
+        return grupos;
     }
 
     public Long getId() {
@@ -55,7 +55,7 @@ public class Person {
         this.id = id;
     }
 
-    public void setGroups(Set<Test> groups) {
-        this.groups = groups;
+    public void setGrupos(Set<Test> grupos) {
+        this.grupos = grupos;
     }
 }

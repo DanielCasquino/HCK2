@@ -47,9 +47,9 @@ public class PersonController {
         Optional<Person> query = personRepository.findById(id);
         // Si se encuentra a la persona
         if (query.isPresent()) {
-            Set<Test> memberIn = query.get().getGroups();
+            Set<Test> memberIn = query.get().getGrupos();
             return new ResponseEntity<>(memberIn, HttpStatus.OK);
         }
-        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
