@@ -25,7 +25,7 @@ public class Person {
     private String name;
 
     @ManyToMany
-    @JoinTable(name = "grupos_persons", joinColumns = @JoinColumn(name = "grupos_id"), inverseJoinColumns = @JoinColumn(name = "person_id"))
+    @JoinTable(name = "grupos_persons", joinColumns = @JoinColumn(name = "person_id"), inverseJoinColumns = @JoinColumn(name = "grupos_id"))
     @JsonIgnore
     private Set<Test> grupos;
 
